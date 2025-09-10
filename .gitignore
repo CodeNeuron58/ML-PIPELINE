@@ -1,0 +1,45 @@
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Model artifacts
+*.pkl
+*.joblib
+*.h5
+*.pb
+model/
+models/
+
+# Metrics and logs
+*.json
+logs/
+*.log
+
+# Data directories
+data/
+datasets/
+raw_data/
+processed_data/
+
+# DVC files
+dvc.lock
+.dvc/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
