@@ -24,7 +24,6 @@ raw_data/
 processed_data/
 
 # DVC files
-dvc.lock
 .dvc/
 
 # Python cache

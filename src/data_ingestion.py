@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 from sklearn.model_selection import train_test_split
+import yaml
 
 def load_data(data_url):
     df = pd.read_csv(data_url)
@@ -15,8 +16,9 @@ def preprocess(df):
     return final_df
 
 
-def split_data(df):
-    train_data,test_data = train_test_split(df, test_size=0.2, random_state=42)
+def split_data(df, params_file="params.yaml"):
+    params = yaml.safe_load(open(params_file))["data_ingestion"]["test_size"]
+    train_data,test_data = train_test_split(df, test_size=params, random_state=42)
     return train_data,test_data
 
 def save_data(train_data, test_data, data_path):

@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 import pickle
+import yaml
 
 def load_data(train_data_path):
     train_data = pd.read_csv(train_data_path)
@@ -17,8 +18,12 @@ def split_data(train_data):
     y_train = train_data.iloc[:, -1].values
     return X_train,y_train
 
-def model_building(X_train,y_train):
-    clf = GradientBoostingClassifier(n_estimators=50)
+def model_building(X_train,y_train, params_file = "params.yaml"):
+    
+    params = yaml.safe_load(open(params_file))["model_building"]
+    
+    clf = GradientBoostingClassifier(n_estimators=params["n_estimators"],
+                                     learning_rate=params["learning_rate"])
     clf.fit(X_train,y_train)
     return clf
 

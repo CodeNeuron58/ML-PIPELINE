@@ -6,6 +6,8 @@ import numpy as np
 
 import os
 
+import yaml
+
 def load_data(train_data,test_data):
     train_data = pd.read_csv('data/processed/train.csv')
     test_data = pd.read_csv('data/processed/test.csv')
@@ -27,8 +29,10 @@ def split_data(train_data,test_data):
     return X_train,y_train,X_test,y_test
 
 # Apply bag of words 
-def apply_bag_of_words(X_train,X_test):
-    vectorizer = CountVectorizer(max_features=500)
+def apply_bag_of_words(X_train,X_test, params_file="params.yaml"):
+    
+    params = yaml.safe_load(open(params_file))["feature_engineering"]["max_features"]
+    vectorizer = CountVectorizer(max_features=params)
     X_train_vectorized = vectorizer.fit_transform(X_train)
     X_test_vectorized = vectorizer.transform(X_test)
     return X_train_vectorized,X_test_vectorized
