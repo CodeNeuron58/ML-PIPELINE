@@ -69,14 +69,18 @@ def save_data(train_data, test_data, data_path):
     os.makedirs(data_path, exist_ok=True)
     train_data.to_csv(os.path.join(data_path, 'train.csv'))
     test_data.to_csv(os.path.join(data_path, 'test.csv'))
-
-if __name__ == '__main__':
+    
+def main():
     data_path = os.path.join('data', 'processed')
     train_data,test_data = load_data(train_data="data/raw/train.csv",test_data="data/raw/test.csv")
     
     train_data['content'] = train_data['content'].apply(final_preprocessing)
     test_data['content'] = test_data['content'].apply(final_preprocessing)
     save_data(train_data, test_data, data_path)
+
+
+if __name__ == '__main__':
+    main()
 
 
 

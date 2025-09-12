@@ -37,12 +37,14 @@ def evaluate_model(model, X_test, y_test):
 def save_metrics(metrics, output_path='metrics.json'):
     with open(output_path, 'w') as f:
         json.dump(metrics, f, indent=4)
-
         
-if __name__ == '__main__':
+def main():
     test_data = load_data('data/features/test.csv')
     X_test,y_test = split_data(test_data)
     model = load_model('model.pkl')
     metrics = evaluate_model(model, X_test, y_test)
     save_metrics(metrics)
-    print("✅ Evaluation complete. Metrics saved to 'metrics.json'.")
+
+        
+if __name__ == '__main__':
+    main()

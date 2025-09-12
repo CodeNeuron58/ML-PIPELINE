@@ -32,11 +32,14 @@ def run_data_ingestion(data_url, data_path):
     train_data, test_data = split_data(df)
     save_data(train_data, test_data, data_path)
 
-
-if __name__ == '__main__':
+def main():
     data_url = 'https://raw.githubusercontent.com/campusx-official/jupyter-masterclass/main/tweet_emotions.csv'
     data_path = os.path.join('data', 'raw')
     run_data_ingestion(data_url, data_path)
+    
+if __name__ == '__main__':
+    main()
+
 
 
 

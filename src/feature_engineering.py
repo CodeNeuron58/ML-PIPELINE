@@ -56,8 +56,10 @@ def featured_data(train_data,test_data,data_path):
     X_train, X_test = handle_nan(X_train, X_test)
     X_train_vectorized,X_test_vectorized = apply_bag_of_words(X_train,X_test)
     combining_data(X_train_vectorized,X_test_vectorized,y_train,y_test,data_path)
-
-if __name__ == '__main__':
+    
+def main():
     data_path = os.path.join('data', 'features')
     featured_data(train_data="data/processed/train.csv",test_data="data/processed/test.csv",data_path=data_path)
-    
+
+if __name__ == '__main__':
+    main()

@@ -29,9 +29,12 @@ def model_building(X_train,y_train, params_file = "params.yaml"):
 
 def save_model(clf):
     pickle.dump(clf,open('model.pkl','wb'))
-
-if __name__ == '__main__':
+    
+def main():
     train_data = load_data('data/features/train.csv')
     X_train,y_train = split_data(train_data)
     clf = model_building(X_train,y_train)
     save_model(clf)
+
+if __name__ == '__main__':
+    main()
